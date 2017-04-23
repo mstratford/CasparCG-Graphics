@@ -881,6 +881,10 @@ app.controller('netballCGController', ['$scope', 'localStorageService', 'socket'
         socket.on("netball", function (msg) {
             $scope.netball = msg;
         });
+        
+        $scope.quarterChanged = function() {
+            console.log("Quarter");
+        };
 
         $scope.$watch('netball', function() {
             if ($scope.netball) {

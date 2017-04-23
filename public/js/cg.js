@@ -163,15 +163,23 @@ app.controller('netballCtrl', ['$scope', 'socket',
         socket.on("netball", function (msg) {
             $scope.netball = msg;
             
-            $scope.TotalScore = $scope.yorkScore + $scope.lancScore;
-       		if (($scope.TotalScore % 2) == 1) {
-					$scope.showcurrentlancs = true;
-					$scope.showcurrentyork = false;
-			} else {
-					$scope.showcurrentlancs = false;
-					$scope.showcurrentyork = true;
-				}
-        });
+            if ($scope.netball.firstpasslanc == true) {
+            	$scope.netball.lancoffset = 1; 
+            }
+            
+            if ($scope.netball.firstpasslanc == true & $scope.netball.firstpassyork == true) {
+            	$scope.netball.lancoffset = 0; 
+            }
+         
+            $scope.TotalScore = $scope.netball.yorkScore + $scope.netball.lancScore + $scope.netball.lancoffset;
+			if (($scope.TotalScore % 2) == 1) {
+						$scope.showcurrentlancs = true;
+						$scope.showcurrentyork = false;
+				} else {
+						$scope.showcurrentlancs = false;
+						$scope.showcurrentyork = true;
+					}
+			});
 
         socket.on("clock:tick", function (msg) {
             $scope.clock = msg.slice(0, msg.indexOf("."));

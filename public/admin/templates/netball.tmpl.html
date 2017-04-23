@@ -3,8 +3,9 @@
 
     <div class="ui grid center aligned">
         <div class="eight wide column">
-            <div class="field">
-                <checkbox ng-model="netball.show" size="large" type="toggle">Show Score Bar</checkbox>
+            <div class="inline field">
+                <checkbox ng-model="netball.show" size="large" type="toggle">Show Score Bar</checkbox>   
+           		<checkbox ng-model="netball.showcurrent" size="large" type="toggle">Show Current Center Pass</checkbox>
             </div>
         </div>
     </div>
@@ -12,8 +13,16 @@
     <div class="ui divider"></div>
 
     <div class="ui grid">
-        <div class="three wide column center aligned">
+        <div class="five wide column center aligned">
             <h2 class="ui header">{{clock}}</h2>
+        <dropdown title="Current Quarter" ng-model="netball.currQuarter" on-change="roundChanged()">
+        <dropdown-group>1st</dropdown-group>
+        <dropdown-group>2nd</dropdown-group>
+        <dropdown-group>3rd</dropdown-group>
+        <dropdown-group>4th</dropdown-group>
+        <dropdown-group>ET 1st</dropdown-group>
+        <dropdown-group>ET 2n</dropdown-group>
+      </dropdown>
         </div>
 
         <div class="five wide column">
@@ -23,7 +32,7 @@
             </div>
         </div>
 
-        <div class="seven wide column">
+        <div class="five wide column">
             <div class="ui">
                 <div class="ui icon red button" ng-click="upClock()">
                     <i class="up arrow icon"></i>
