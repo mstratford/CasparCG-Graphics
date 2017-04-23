@@ -74,6 +74,10 @@ io.on('connection', function(socket) {
     socket.on("bug:get", function(msg) {
 		io.sockets.emit("bug", bug);
 	});
+	
+	socket.on("bug:hideallgen", function() {
+		io.sockets.emit("bug:hideallgen");
+	});
 
 	/*
 	 * 		Lower Thirds
@@ -192,7 +196,7 @@ io.on('connection', function(socket) {
         io.sockets.emit("swimming", swimming);
     });
 
-		/*
+	/*
  	 * 		Basketball
  	 */
  	socket.on("basketball", function(msg) {

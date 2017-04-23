@@ -105,7 +105,7 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
         $routeProvider
             .when("/general", {
                 templateUrl: '/admin/templates/general.tmpl.html',
-                controller: 'generalCGController'
+                controller: 'bugCGController'
             })
             .when("/lowerThirds", {
                 templateUrl: '/admin/templates/lowerThirds.tmpl.html',
@@ -223,13 +223,13 @@ app.controller('archeryCGController', ['$scope', 'socket',
   }
 ]);
 
-app.controller('generalCGController', ['$scope', 'socket',
+app.controller('bugCGController', ['$scope', 'socket',
     function($scope, socket){
         socket.on("bug", function (msg) {
             $scope.general = msg;
         });
 
-        $scope.$watch('general', function() {
+        $scope.$watch('bug', function() {
             if ($scope.general) {
                 socket.emit("bug", $scope.general);
             } else {
@@ -240,6 +240,10 @@ app.controller('generalCGController', ['$scope', 'socket',
         socket.on("bug", function (msg) {
             $scope.bug = msg;
         });
+        
+        $scope.hideallgen = function() {
+            socket.emit("bug:hideallgen");
+        };
         
         function getBugData() {
             socket.emit("bug:get");

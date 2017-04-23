@@ -98,6 +98,13 @@ app.controller('bugCtrl', ['$scope', '$timeout', 'socket',
             $scope.bug = msg;
         });
         
+        socket.on("bug:hideallgen", function (msg) {
+            $scope.state.showLogo = false;
+            $scope.state.showClock = false;
+            $scope.state.showLive = false;
+            $scope.state.showLocation = false;
+        });
+        
         function getBugData() {
             socket.emit("bug:get");
         };
