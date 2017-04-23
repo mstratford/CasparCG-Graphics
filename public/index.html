@@ -108,6 +108,15 @@
                 <div class="score york">{{basketball.yorkScore}} YORK</div>
             </div>
         </div>
+        
+        <div ng-controller="netballCtrl" class="netball left top scale-fade" ng-show="netball.show">
+            <div class="row">    	
+                <div class="score lanc"><span ng-show="showcurrentlancs">&diams;</span>LANCS {{netball.lancScore}}</div>
+                <div class="score york">{{netball.yorkScore}} YORK<span ng-show="showcurrentyork">&diams;</span></div>
+                <div class="clock">{{clock}}</div>
+                <div class="netballquarter">{{netball.quarter}}</div>
+            </div>
+        </div>
 
         <div ng-controller="dartsCtrl" class="right bottom darts scale-fade" ng-show="darts.show">
             <div class="row header">

@@ -17,6 +17,7 @@ var swimming = {order: ''};
 var grid = {};
 var archery = {};
 var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
+var netball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -175,8 +176,20 @@ io.on('connection', function(socket) {
     socket.on("swimming:get", function(msg) {
         io.sockets.emit("swimming", swimming);
     });
+    
+	/*
+	 * 		Nettball
+	 */
+	socket.on("netball", function(msg) {
+        netball = msg;
+		io.sockets.emit("netball", msg);
+	});
 
-		/*
+    socket.on("netball:get", function(msg) {
+		io.sockets.emit("netball", netball);
+	});
+
+	/*
  	 * 		Basketball
  	 */
  	socket.on("basketball", function(msg) {
@@ -187,6 +200,10 @@ io.on('connection', function(socket) {
   socket.on("basketball:get", function(msg) {
  		io.sockets.emit("basketball", basketball);
  	});
+ 	
+ 	/*
+ 	 * 		Archery
+ 	 */
 
 	socket.on("archery", function(msg) {
         archery = msg;
