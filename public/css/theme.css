@@ -55,14 +55,6 @@ h1, h2, h3, h4 {
     top: 50px;
 }
 
-.topcenter {
-	top: 50px;
-	position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-}
-
 .center {
     position: absolute;
     left: 0;
@@ -656,7 +648,6 @@ h1, h2, h3, h4 {
   .grid {
 
 	width: 650px;
-	text-align: center;
 	background-clip: padding-box;
    }
     .grid h1 {
@@ -725,7 +716,7 @@ h1, h2, h3, h4 {
     .grid .row:last-child {
         margin-bottom: 5px;
     }
-
+	
 
 /**************************************************/
 /*              [Swimming]                        */
