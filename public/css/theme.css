@@ -55,6 +55,14 @@ h1, h2, h3, h4 {
     top: 50px;
 }
 
+.topcenter {
+	top: 50px;
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
 .center {
     position: absolute;
     left: 0;
@@ -662,42 +670,51 @@ h1, h2, h3, h4 {
     }
 
     .grid .gridleft, .grid .gridright {
-        float: left;
         line-height: 40px;
         background-color: #1f1a34;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-        font-size: 25px;
+        font-size: 22px;
     }
 
     .grid .gridleft {
         padding-left: 10px;
         text-align: left;
+		float: left;
+		width: 50%;
     }
 
     .grid .gridright {
         border-left: 3px solid #fff;
+		float: right; 
+		width: 50%;
+    }
+	
+	.sporttimesgridright {
+    	width: 20% !important;
+		text-align: center;
     }
     
-	.grid .gridright .sporttimes {
-    	width: 20%;
-    }
-    
-    .grid .gridleft .sporttimes {
-    	width: 80%;
+    .sporttimesgridleft {
+    	width: 80% !important;
     }
      
-    .halves {
+    .halvesgridleft {
+    	width: 50%;
+    	text-align: left;
+    	padding-left: 10px;
+    }
+	.halvesgridright {
     	width: 50%;
     	text-align: left;
     	padding-left: 10px;
     }
     
-    .grid .gridleft .onebar {
-    	width:100%
+    .onebargridleft {
+    	width:100% !important;
     }
 	
-	.grid .gridright .onebar {
-    	width:0%
+	.onebargridright {
+    	display:none;
     }
     
     .grid .row {
