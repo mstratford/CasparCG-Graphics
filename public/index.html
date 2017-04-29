@@ -16,10 +16,10 @@
                         <h1 class="black">{{clock | date: "HH:mm"}}</h1>
                  </div>
                  <div class="bug top scale-fade-in" ng-show="state.showLive">
-                 <h1>{{bug.livetext}}</h1>
+                 <h1 ng-show="state.showLive">{{bug.livetext}}</h1>
                  </div>
                  <div class="bug top scale-fade-in" ng-show="state.showLocation">
-                 <h1 class="white">{{bug.locationtext}}</h1></div>
+                 <h1 class="white" ng-show="state.showLocation">{{bug.locationtext}}</h1></div>
                 </div>
 
                 <div class="logo right top toggle" ng-show="state.showLogo">
