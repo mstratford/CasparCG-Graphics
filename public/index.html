@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>CG</title>
-        <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
-        <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link href="/css/fonts/montserrat.css" rel="stylesheet" type="text/css">
         <link href="/css/theme.css" rel="stylesheet" type="text/css">
         <link href="/css/animation.css" rel="stylesheet" type="text/css">
     </head>
@@ -134,6 +134,7 @@
 	              	</div>	
             	</div>
         </div>
+        
         <div ng-controller="footballCtrl" ng-show="football.showpre">
         		<img ng-src="images/YorkSport250.png" ng-show="football.showpre" class="bottom leftLogo scale-fade"/>
 				<img ng-src="images/LancasterSport250.png" ng-show="football.showpre" class="bottom rightLogo scale-fade"/>
@@ -154,14 +155,33 @@
 					</div>
                 	<div class="clearfix"></div>
             	</div>
-        </div>		
+        </div>
+                
+        
+        <div ng-controller="rugbyCtrl" class="football left top scale-fade" ng-show="rugby.show">
+            <div class="row">
+                <div class="clock">{{clock}}</div>
+                <div class="score lanc">LANCS {{rugby.lancScore}}</div>
+                <div class="score york">{{rugby.yorkScore}} YORK</div>
+            </div>
+            	<div ng-show="rugby.showextratime" class="extratime scale-fade">ET</div>
+        </div>
 
-
+        
         <div ng-controller="basketballCtrl" class="basketball left top scale-fade" ng-show="basketball.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
                 <div class="score lanc">LANCS {{basketball.lancScore}}</div>
                 <div class="score york">{{basketball.yorkScore}} YORK</div>
+            </div>
+        </div>
+        
+        <div ng-controller="netballCtrl" class="netball left top scale-fade" ng-show="netball.show">
+            <div class="row">    	
+                <div class="score lanc"><span ng-show="netball.showcurrent"><span ng-show="showcurrentlancs">&diams;</span></span>LANCS {{netball.lancScore}}</div>
+                <div class="score york">{{netball.yorkScore}} YORK<span ng-show="netball.showcurrent"><span ng-show="showcurrentyork">&diams;</span></span></div>
+                <div class="clock">{{clock}}</div>
+                <div class="netballquarter fade" ng-show="netball.showquarter"><h1>{{netball.currQuarter}}</h1></div>
             </div>
         </div>
 
@@ -224,7 +244,8 @@
 
         <div ng-controller="gridCtrl">
           <div class="center-page scale-fade" ng-show="show">
-            <div class="grid {{grid.position}}">
+            <div class="grid {{grid.position}}" >
+
               <div class="gradient-overlay">
                 <h1 style="background-color: {{grid.headingcolor}} !important;">{{ grid.header }}</h1>
               </div>

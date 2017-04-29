@@ -127,14 +127,27 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
 
           $http.get('https://roseslive.co.uk/score.json', config)
             .success(function(data) {
+              if(isNaN(data.york) || isNaN(data.lancs)){
+                console.log("Roses live is giving us nonsense");
+                return;
+              };
+              if(!$scope.manualScore){
                 $scope.yorkScore = data.york;
                 $scope.lancScore = data.lancs;
+              };
+                socket.emit('lancScore', data.lancs);
+                socket.emit('yorkScore', data.york);
             }
           );
         };
 
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
+            $scope.manualScore = state.manualScore;
+            if(state.manualScore){
+              $scope.yorkScore = state.yorkScore;
+              $scope.lancScore = state.lancScore;
+            };
         });
 
         $scope.$watch('score', function() {
@@ -173,6 +186,47 @@ app.controller('footballCtrl', ['$scope', 'socket',
 
         function getFootballData() {
             socket.emit("football:get");
+            socket.emit("clock:get");
+        }
+    }
+]);
+
+app.controller('netballCtrl', ['$scope', 'socket',
+    function($scope, socket){
+
+        socket.on("netball", function (msg) {
+            $scope.netball = msg;
+            
+            if ($scope.netball.firstpasslanc == true) {
+            	$scope.netball.lancoffset = 1; 
+            }
+            
+            if ($scope.netball.firstpasslanc == true & $scope.netball.firstpassyork == true) {
+            	$scope.netball.lancoffset = 0; 
+            }
+         
+            $scope.TotalScore = $scope.netball.yorkScore + $scope.netball.lancScore + $scope.netball.lancoffset;
+			if (($scope.TotalScore % 2) == 1) {
+						$scope.showcurrentlancs = true;
+						$scope.showcurrentyork = false;
+				} else {
+						$scope.showcurrentlancs = false;
+						$scope.showcurrentyork = true;
+					}
+			});
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.$watch('netball', function() {
+            if (!$scope.netball) {
+                getNetballData();
+            }
+        }, true);
+
+        function getNetballData() {
+            socket.emit("netball:get");
             socket.emit("clock:get");
         }
     }
@@ -225,7 +279,7 @@ app.controller('gridCtrl', ['$scope', 'socket',
         socket.on("grid", function (payload) {
             if (payload === "hide") {
                 //We first remove every element with a delay
-                $scope.grid = {};
+                setTimeout(function(){$scope.grid = {};}, 1000);
                 $scope.show = false;
             } else {
                 $scope.show = true;
