@@ -110,7 +110,7 @@ h1, h2, h3, h4 {
     font-size: 2.5vw;
     font-weight: normal;
     padding: 5px 8px;
-    background-color: #BC204B;
+    background-color: #7313AF;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -134,7 +134,7 @@ h1, h2, h3, h4 {
 /*              [Boxing Score]                    */
 /**************************************************/
 .boxing-score {
-    background-color: #BC204B;
+    background-color: #7313AF;
     width: 15%;
 }
 
@@ -210,7 +210,7 @@ h1, h2, h3, h4 {
     float: left;
     padding: 3px 10px;
     margin-right: 0px;
-    background-color: #BC204B;
+    background-color: #7313AF;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -348,7 +348,7 @@ h1, h2, h3, h4 {
 }
 
 .football .extratime {
-  background-color: #bc204b;;
+  background-color: #7313AF;;
   color: #fff;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 12%;
@@ -421,7 +421,7 @@ h1, h2, h3, h4 {
 .darts .legs {
   width: 13%;
   color: #fff;
-  background-color: #BC204B;
+  background-color: #7313AF;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -429,7 +429,7 @@ h1, h2, h3, h4 {
 .darts .sets {
   width: 13%;
   color: #fff;
-  background-color: #BC204B;
+  background-color: #7313AF;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -437,7 +437,7 @@ h1, h2, h3, h4 {
 .darts .score {
   width: 17%;
   color: #fff;
-  background-color: #BC204B;
+  background-color: #7313AF;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -563,7 +563,7 @@ h1, h2, h3, h4 {
 .badminton .matches {
   width: 21%;
   color: #fff;
-  background-color: #BC204B;
+  background-color: #7313AF;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -571,7 +571,7 @@ h1, h2, h3, h4 {
 .badminton .games {
   width: 22%;
   color: #fff;
-  background-color: #BC204B;
+  background-color: #7313AF;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -632,7 +632,7 @@ h1, h2, h3, h4 {
         font-size: 2.5vw;
         font-weight: normal;
         padding: 5px;
-        background-color: #BC204B;
+        background-color: #7313AF;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
     }
 
@@ -671,7 +671,7 @@ h1, h2, h3, h4 {
 
 .swimmingclock {
   width: 20%;
-  background-color: #BC204B;
+  background-color: #7313AF;
   text-align: left;
   border-radius: 5px;
   background-clip: padding-box;
@@ -690,7 +690,7 @@ h1, h2, h3, h4 {
   line-height: 45px;
   line-height: 3.3vw;
   color: #fff;
-  background-color: #BC204B;
+  background-color: #7313AF;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -748,7 +748,7 @@ h1, h2, h3, h4 {
     text-align: center;
     border-right: 2px solid #eee;
     color: #fff;
-    background-color: #BC204B;
+    background-color: #7313AF;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -814,7 +814,7 @@ h1, h2, h3, h4 {
     width: 3.8vw;
     text-align: center;
     color: #fff;
-    background-color: #BC204B;
+    background-color: #7313AF;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
