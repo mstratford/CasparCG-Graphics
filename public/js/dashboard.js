@@ -76,6 +76,13 @@ app.controller('AppCtrl', ['$scope', '$location', 'socket',
             icon: 'red bullseye',
             // live: $scope.dart.show,
         });
+        
+    	$scope.menu.push({
+            name: 'Social Media',
+            url: '/social-media',
+            type: 'link',
+            icon: 'blue twitter',
+        });
 
         $scope.menu.push({
             name: 'Swimming',
@@ -146,6 +153,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/darts", {
                 templateUrl: '/admin/templates/darts.tmpl.html',
                 controller: 'dartsCGController'
+            })
+            .when("/social-media", {
+                templateUrl: '/admin/templates/social-media.tmpl.html',
+                controller: 'socialmediaCGController'
             })
             .when("/swimming", {
                 templateUrl: '/admin/templates/swimming.tmpl.html',
@@ -690,6 +701,27 @@ app.controller('dartsCGController', ['$scope', 'socket',
                 $scope.last2 = "";
             }
         };
+    }
+]);
+
+app.controller('socialmediaCGController', ['$scope', 'socket',
+    function($scope, socket) {
+        socket.on("socialmedia", function (msg) {
+            $scope.socialmedia = msg;
+        });
+
+        $scope.$watch('socialmedia', function() {
+            if ($scope.socialmedia) {
+                socket.emit("socialmedia", $scope.socialmedia);
+            } else {
+                getSocialMediaData();
+            }
+        }, true);
+
+        function getSocialMediaData() {
+            socket.emit("socialmedia:get");
+        }
+
     }
 ]);
 
