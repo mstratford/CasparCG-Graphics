@@ -8,6 +8,7 @@ var io = require('socket.io').listen(server);
 
 var theme = {selected: "roses2017"};
 var bug = {livetext: "Live", locationtext: ''};
+var holdingCard = {video: "default.mp4", autoplay:true, loop: true, showVideo:false, play: false, volume: false};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
@@ -83,6 +84,18 @@ io.on('connection', function(socket) {
 
     socket.on("bug:get", function(msg) {
 		io.sockets.emit("bug", bug);
+	});
+
+	/*
+	 *		Holding Card
+	 */
+	socket.on("holdingCard", function(msg) {
+        holdingCard = msg;
+		io.sockets.emit("holdingCard", msg);
+	});
+
+	socket.on("holdingCard:get", function(msg) {
+		io.sockets.emit("holdingCard", holdingCard);
 	});
 
 	/*

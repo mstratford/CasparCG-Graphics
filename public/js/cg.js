@@ -23,6 +23,32 @@ function($scope, socket){
 }
 ]);
 
+app.controller('holdingCardCtrl', ['$scope', 'socket',
+function($scope, socket){
+    holdingCardVideo = document.getElementById("holdingCardVideo");
+    socket.on("holdingCard", function (msg) {
+        $scope.holdingCard = msg;
+            if ($scope.holdingCard.play) {
+                holdingCardVideo.play();
+            } else {
+                holdingCardVideo.pause();
+            }
+    });
+
+    $scope.$watch('holdingCard', function() {
+        if ($scope.holdingCard) {
+            socket.emit("holdingCard", $scope.holdingCard);
+        } else {
+            getHoldingCardData();
+        }
+    }, true);
+
+    function getHoldingCardData() {
+        socket.emit("holdingCard:get");
+    };
+}
+]);
+
 
 app.controller('lowerThirdsCtrl', ['$scope', 'socket',
     function($scope, socket){

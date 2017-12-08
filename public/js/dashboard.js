@@ -21,6 +21,13 @@ app.controller('AppCtrl', ['$scope', '$location', 'socket',
         });
 
         $scope.menu.push({
+            name: 'Holding Card',
+            url: '/holding',
+            type: 'link',
+            icon: 'settings',
+        });
+
+        $scope.menu.push({
             name: 'Lower Thirds',
             url: '/lowerThirds',
             type: 'link',
@@ -111,6 +118,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/general", {
                 templateUrl: '/admin/templates/general.tmpl.html',
                 controller: 'generalCGController'
+            })
+            .when("/holding", {
+                templateUrl: '/admin/templates/holdingCard.tmpl.html',
+                controller: 'holdingCardCGController'
             })
             .when("/lowerThirds", {
                 templateUrl: '/admin/templates/lowerThirds.tmpl.html',
@@ -268,6 +279,28 @@ app.controller('generalCGController', ['$scope', 'socket',
             socket.emit("bug:get");
         }
     }
+]);
+
+app.controller('holdingCardCGController', ['$scope', 'socket',
+function($scope, socket){
+
+
+    socket.on("holdingCard", function (msg) {
+        $scope.holdingCard = msg;
+    });
+
+    $scope.$watch('holdingCard', function() {
+        if ($scope.holdingCard) {
+            socket.emit("holdingCard", $scope.holdingCard);
+        } else {
+            getHoldingCardData();
+        }
+    }, true);
+
+    function getHoldingCardData() {
+        socket.emit("holdingCard:get");
+    }
+}
 ]);
 
 app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'socket',

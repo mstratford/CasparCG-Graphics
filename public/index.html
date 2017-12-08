@@ -10,6 +10,15 @@
     </head>
 
     <body>
+
+        <div ng-controller="holdingCardCtrl">
+            <div class="wrapper toggle holdingCard" ng-show="holdingCard.showVideo">
+                <video id="holdingCardVideo" loop>
+                    <source src="/themes/roses2017/holdingcard.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+
         <div ng-controller="bugCtrl">
             <div class="wrapper slide-left">
                  <div class="bug top scale-fade-in" ng-show="state.showClock">
@@ -27,6 +36,8 @@
                 </div>
             </div>
         </div>
+
+
 
         <div ng-controller="lowerThirdsCtrl">
         	<div class="lowerthird bottom fullwidth scale-fade" ng-show="showFull">
