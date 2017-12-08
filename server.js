@@ -6,7 +6,9 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var theme = {selected: "roses2017"};
 var bug = {livetext: "Live", locationtext: ''};
+var holdingCard = {video: "default.mp4", autoplay:true, loop: true, showVideo:false, play: false, volume: false};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
@@ -67,6 +69,15 @@ io.on('connection', function(socket) {
 	/*
 	 * 		General Functions
 	 */
+	socket.on("theme", function(msg) {
+        theme = msg;
+		io.sockets.emit("theme", msg);
+	});
+
+	socket.on("theme:get", function(msg) {
+		io.sockets.emit("theme", theme);
+	});
+
 	socket.on("bug", function(msg) {
         bug = msg;
 		io.sockets.emit("bug", msg);
@@ -74,6 +85,18 @@ io.on('connection', function(socket) {
 
     socket.on("bug:get", function(msg) {
 		io.sockets.emit("bug", bug);
+	});
+
+	/*
+	 *		Holding Card
+	 */
+	socket.on("holdingCard", function(msg) {
+        holdingCard = msg;
+		io.sockets.emit("holdingCard", msg);
+	});
+
+	socket.on("holdingCard:get", function(msg) {
+		io.sockets.emit("holdingCard", holdingCard);
 	});
 
 	/*
@@ -86,7 +109,7 @@ io.on('connection', function(socket) {
 	socket.on("lowerthird:right", function(msg) {
 		io.sockets.emit("lowerthird:right", msg);
 	});
-	
+
 	socket.on("lowerthird:full", function(msg) {
 		io.sockets.emit("lowerthird:full", msg);
 	});
@@ -94,11 +117,11 @@ io.on('connection', function(socket) {
 	socket.on("lowerthird:hidefull", function() {
 		io.sockets.emit("lowerthird:hidefull");
 	});
-	
+
 	socket.on("lowerthird:hideleft", function() {
 		io.sockets.emit("lowerthird:hideleft");
 	});
-	
+
 	socket.on("lowerthird:hideright", function() {
 		io.sockets.emit("lowerthird:hideright");
 	});
