@@ -2,34 +2,56 @@
   <h2>General</h2>
 
 <div class="ui divider"></div>
-  <div class="inline field">
-    <checkbox size="large" ng-model="general.showLogo" type="toggle">Show Logo</checkbox>
-    <checkbox size="large" ng-model="general.showClock" type="toggle">Show Clock</checkbox>
+
+<h3>Bug Settings</h3>
+<div class="sixteen wide column">
+  <div class="inline fields">
+    <div class="five wide field">
+      <img src="/themes/{{theme.selected}}/logo.png">
+    </div>
+    <div class="five wide field">
+      <checkbox size="large" ng-model="general.showLogo" type="toggle">Show Logo</checkbox>
+    </div>
   </div>
+</div>
+<div class="sixteen wide column">
+  <div class="inline fields">
+    <div class="five wide field">
+      <strong>{{clock | date: "HH:mm"}}</strong>
+    </div>
+    <div class="five wide field">
+      <checkbox size="large" ng-model="general.showClock" type="toggle">Show Clock</checkbox>
+    </div>
+  </div>
+</div>
+<div class="sixteen wide column">
+  <div class="inline fields">
+    <div class="five wide field">
+      <input name="livetext" value="Live" placeholder="Live" type="text" ng-model="bug.livetext" />
+    </div>
+    <div class="five wide field">
+      <checkbox size="large" ng-model="bug.showLive" type="toggle">Show Live</checkbox>
+    </div>
+  </div>
+</div>
+<div class="sixteen wide column">
+  <div class="inline fields">
+    <div class="five wide field">
+      <input name="bugtext" placeholder="Live Location" type="text" ng-model="bug.locationtext" />
+    </div>
+    <div class="five wide">
+      <checkbox size="large" ng-model="bug.showLocation" type="toggle">Show Location</checkbox>
+    </div>
+  </div>
+</div>
 
 <div class="ui divider"></div>
-    <div class="sixteen wide column">
-      <div class="inline fields">
-  		<div class="five wide field">
-           <input name="livetext" value="Live" placeholder="Live" type="text" ng-model="bug.livetext" />
-        </div>
-        <div class="five wide field">
-          <checkbox size="large" ng-model="bug.showLive" type="toggle">Show Live</checkbox>
-        </div>
-	</div>
-    <div class="sixteen wide column">
-      <div class="inline fields">
-  		<div class="five wide field">
-           <input name="bugtext" placeholder="Live Location" type="text" ng-model="bug.locationtext" />
-        </div>
-        <div class="five wide">
-           <checkbox size="large" ng-model="bug.showLocation" type="toggle">Show Location</checkbox>
-        </div>
-  </div>
-<div class="ui divider"></div>
+  <h3>Theme Settings</h3>
   <div class="sixteen wide column">
-      <div class="inline fields">
+    <div class="inline fields">
   		<div class="five wide field">
-           <input name="themeselected" placeholder="Theme Name Selected" type="text" ng-model="theme.selected" />
-        </div>
-	</div>
+        <input name="themeselected" placeholder="Theme Name Selected" type="text" ng-model="theme.selected" />
+      </div>
+    </div>
+  </div>
+</div>
