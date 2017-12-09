@@ -67,6 +67,12 @@ h1, h2, h3, h4 {
     margin: 0 auto;
 }
 
+.middle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .float-left {
     float: left;
 }
