@@ -682,6 +682,45 @@ h1, h2, h3, h4 {
 
 
 /**************************************************/
+/*              [Social Media]                    */
+/**************************************************/
+
+.social-media {
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.0);
+    font-size: 0.0vw;
+    border-radius: 5px;
+    background-clip: padding-box;
+  }
+
+  .social-media .big-center iframe {
+      -webkit-transform:scale(1.0);
+      -moz-transform: scale(1.0);
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+  }
+
+  .social-media twitterwidget::shadow .Tweet-brand, .social-media twitterwidget::shadow .Tweet-actions {
+    display: none;
+  }
+
+  .instagram-media .instagram-media-rendered {
+      max-height: 620px;
+  }
+
+  .twitter-tweet .twitter-tweet-rendered {
+      max-height: 620px;
+  }
+
+  .fb-post .fb_iframe_widget .fb_iframe_widget_fluid {
+      max-height: 620px;
+      background-color: #FFF;
+  }
+
+/**************************************************/
 /*              [Swimming]                        */
 /**************************************************/
 
