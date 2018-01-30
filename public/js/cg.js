@@ -20,6 +20,10 @@ function($scope, socket){
     function getThemeData() {
         socket.emit("theme:get");
     };
+
+    $scope.getHoldingcardVideoSrc = function (theme) {
+        return '/themes/' + theme + '/holdingcard.mp4';
+    };
 }
 ]);
 
@@ -290,9 +294,9 @@ app.controller('socialmediaCtrl', ['$scope', '$http', 'socket', '$sce',
               'Content-Type': 'application/jsonp',
             }
           };
-          
+
 // Checks the user provided url, determines which oEmbed engine to use
-// For more oEmbed sites, add another else if        
+// For more oEmbed sites, add another else if
          if (tweetUrl.indexOf('instagram.com') >= 0) {
                   oEmbedUrl = 'http://api.instagram.com/oembed?url=';
           } else if (tweetUrl.indexOf('facebook.com') >= 0) {
@@ -306,7 +310,7 @@ app.controller('socialmediaCtrl', ['$scope', '$http', 'socket', '$sce',
           } else {
                   oEmbedUrl = 'https://api.twitter.com/1/statuses/oembed.json?url=';
           }
-         
+
 
 // $http.jsonp goes gets the data from oEmbed
           $http.jsonp(oEmbedUrl+tweetUrl+'&callback=JSON_CALLBACK', config)
@@ -314,16 +318,16 @@ app.controller('socialmediaCtrl', ['$scope', '$http', 'socket', '$sce',
                 $scope.tweetHTML = $sce.trustAsHtml(data.html);		// trustAsHtml stops the app adding '' around the html code
                 $scope.tweetAuthor = data.author_name;				// Not used yet, but could be handy
                 $scope.tweetType = data.type;						// Not used yet, but could be handy for the client side
-                setTimeout(function() { 
+                setTimeout(function() {
                 // Once a post is called, it needs to be styled correctly by initialising some cleverness
-                // Each service requires its own function determined by the content of the url    
+                // Each service requires its own function determined by the content of the url
                    if (tweetUrl.indexOf("instagram.com") >= 0) { instgrm.Embeds.process(); }
                    else if (tweetUrl.indexOf("facebook.com") >= 0) { window.fbAsyncInit = function() {
 								FB.init({
 								  xfbml      : true,
 								  version    : 'v2.8'
 								});
-							  }; 
+							  };
 							  (function(d, s, id){
 								var js, fjs = d.getElementsByTagName(s)[0];
 								if (d.getElementById(id)) {return;}
@@ -339,7 +343,7 @@ app.controller('socialmediaCtrl', ['$scope', '$http', 'socket', '$sce',
              }
           );
         };
-        			
+
         $scope.$watch('socialmedia', function() {
             if (!$scope.socialmedia) {
                 getSocialMediaData();

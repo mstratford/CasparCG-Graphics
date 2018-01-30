@@ -28,8 +28,6 @@ stopwatch.on('tick:stopwatch', function(time) {
 	io.sockets.emit("clock:tick", time);
 });
 
-
-
 io.on('connection', function(socket) {
 	console.log("Client Socket Connected");
 
@@ -195,7 +193,7 @@ io.on('connection', function(socket) {
     socket.on("dart:get", function(msg) {
         io.sockets.emit("dart", dart);
     });
-    
+
     /*
 	 * 		Social Media
 	 */

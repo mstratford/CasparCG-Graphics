@@ -12,10 +12,11 @@
     <body>
 
         <div ng-controller="holdingCardCtrl">
-            <div class="wrapper toggle holdingCard" ng-show="holdingCard.showVideo">
-                <video id="holdingCardVideo" loop>
-                    <source src="/themes/{{theme.selected}}/holdingcard.mp4" type="video/mp4" />
+            <div class="wrapper toggle holdingCard" ng-show="holdingCard.showVideo" >
+                <div ng-controller="themeCtrl">
+                <video ng-src="{{getHoldingcardVideoSrc(theme.selected)}}" id="holdingCardVideo" loop>
                 </video>
+                </div>
             </div>
         </div>
 
