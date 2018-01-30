@@ -250,6 +250,11 @@ h1, h2, h3, h4 {
   background: rgba(0,45,90,0.8);
   padding: 20px;
 }
+.holdingCard .now-and-next .now-credits {
+  font-size: 1.5em;
+  background: rgba(0,45,90,0.9);
+  padding: 20px;
+}
 /**************************************************/
 /*              [Live Bug]                        */
 /**************************************************/
