@@ -223,6 +223,7 @@ h1, h2, h3, h4 {
 .holdingCard .thumbnail {
   float:left;
   max-height:50vh;
+  background: rgba(0, 64, 129, 0.8);
 }
 .holdingCard .now-and-next {
   display: flex;
