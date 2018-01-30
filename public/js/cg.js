@@ -50,6 +50,23 @@ function($scope, socket){
     function getHoldingCardData() {
         socket.emit("holdingCard:get");
     };
+
+
+    socket.on("timelord", function (msg) {
+        $scope.timelord = msg;
+    });
+
+    $scope.$watch('timelord', function() {
+        if ($scope.timelord) {
+            socket.emit("timelord", $scope.timelord);
+        } else {
+            getTimelordData();
+        }
+    }, true);
+
+    function getTimelordData() {
+        socket.emit("timelord:get");
+    };
 }
 ]);
 

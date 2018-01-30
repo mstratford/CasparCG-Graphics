@@ -14,9 +14,29 @@
         <div ng-controller="holdingCardCtrl">
             <div class="wrapper toggle holdingCard" ng-show="holdingCard.showVideo" >
                 <div ng-controller="themeCtrl">
-                <video ng-src="{{getHoldingcardVideoSrc(theme.selected)}}" id="holdingCardVideo" loop>
-                </video>
+                    <video ng-src="{{getHoldingcardVideoSrc(theme.selected)}}" id="holdingCardVideo" loop></video>
+                <div id="holdingcard-screen-logo" class="center middle" ng-show="false">
+                    <img src="/themes/{{theme.selected}}/holdingcard-logo.png">
                 </div>
+                <div id="holdingcard-screen-advert" class="center middle" ng-show="false">
+                    <img src="/themes/{{theme.selected}}/holdingcard-advert.png">
+                </div>
+                <div id="holdingcard-screen-timelord" class="top">
+                    <img src="/themes/{{theme.selected}}/logo.png" class="top left">
+                    <p>{{timelord.song}}</p>
+                    <p>{{timelord.artist}}</p>
+                    <div class="now-and-next bottom left right">
+                        <img class="thumbnail" src="{{timelord.image}}">
+                        <div class="text">
+                            <h3 class="heading">You're currently watching...</h3>
+                            <h2 class="now"><span>Now</span> {{timelord.now}}</h2>
+                            <p class="now-desc">{{timelord.nowdesc}}</p>
+                            <div class="now-credits"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             </div>
         </div>
 
@@ -336,7 +356,9 @@
         <script type="text/javascript" src="/js/libs/angular.min.js"></script>
         <script type="text/javascript" src="/js/libs/angular-animate.min.js"></script>
         <script type="text/javascript" src="/js/ng-socket-io.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/js/cg.js"></script>
+        <script type="text/javascript" src="/js/timelord.js"></script>
         <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
 

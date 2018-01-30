@@ -9,6 +9,7 @@ var io = require('socket.io').listen(server);
 var theme = {selected: "roses2017"};
 var bug = {livetext: "Live", locationtext: ''};
 var holdingCard = {video: "default.mp4", autoplay:true, loop: true, showVideo:false, play: false, volume: false};
+var timelord = {song: "Hey Delila", artist: "Benga Bus", image: "https://ury.org.uk/media/image_meta/ShowImageMetadata/52.png", now: "Current Show", nowdesc: "Blah blah blah", next: "Next Show"}
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
@@ -89,13 +90,30 @@ io.on('connection', function(socket) {
 	 *		Holding Card
 	 */
 	socket.on("holdingCard", function(msg) {
-        holdingCard = msg;
+		holdingCard = msg;
 		io.sockets.emit("holdingCard", msg);
 	});
 
 	socket.on("holdingCard:get", function(msg) {
 		io.sockets.emit("holdingCard", holdingCard);
 	});
+
+	/*
+	 *		Timelord
+	 */
+	socket.on("timelord", function(msg) {
+		timelord = msg;
+		io.sockets.emit("timelord", msg);
+	});
+
+	socket.on("timelord:get", function(msg) {
+		io.sockets.emit("timelord", timelord);
+	});
+
+
+
+
+
 
 	/*
 	 * 		Lower Thirds
