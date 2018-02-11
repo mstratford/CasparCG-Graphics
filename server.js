@@ -6,10 +6,10 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-var theme = {selected: "roses2017"};
+var theme = {selected: "ury"};
 var bug = {livetext: "Live", locationtext: ''};
 var holdingCard = {video: "default.mp4", autoplay:true, loop: true, showVideo:false, play: false, volume: false};
-var timelord = {}
+var timelord = {nowNextLocation: "top"};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
