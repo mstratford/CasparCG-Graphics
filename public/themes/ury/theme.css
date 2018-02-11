@@ -228,6 +228,8 @@ h1, h2, h3, h4 {
 .holdingCard .now-and-next {
   display: flex;
   align-content: stretch;
+  position: absolute;
+  margin: 0 50px;
 }
 .holdingCard .now-and-next .text {
   background: rgba(0, 64, 129, 0.7);
