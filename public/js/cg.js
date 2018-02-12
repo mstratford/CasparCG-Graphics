@@ -20,10 +20,6 @@ function($scope, socket){
     function getThemeData() {
         socket.emit("theme:get");
     };
-
-    $scope.getHoldingcardVideoSrc = function (theme) {
-        return '/themes/' + theme + '/holdingcard.mp4';
-    };
 }
 ]);
 
@@ -47,6 +43,10 @@ function($scope, socket){
         }
     }, true);
 
+    $scope.getHoldingcardVideoSrc = function (theme) {
+        return '/themes/' + theme + '/' + $scope.holdingCard.video;
+    };
+
     function getHoldingCardData() {
         socket.emit("holdingCard:get");
     };
@@ -54,6 +54,10 @@ function($scope, socket){
 
     socket.on("timelord", function (msg) {
         $scope.timelord = msg;
+        Timelord.lockNow = msg.lockNow;
+        Timelord.lockNowTime = msg.lockNowTime;
+        Timelord.showNews = msg.showNews;
+        Timelord.showNewsNow = msg.showNewsNow;
     });
 
     $scope.$watch('timelord', function() {

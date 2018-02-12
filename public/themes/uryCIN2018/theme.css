@@ -199,6 +199,7 @@ h1, h2, h3, h4 {
 /*              [Holding Card]                        */
 /******************************************************/
 
+
 .holdingCard.wrapper {
     top: 0;
     left: 0;
@@ -220,23 +221,37 @@ h1, h2, h3, h4 {
   width: 100%;
   min-height: 100%;
 }
+
+#holdingcard-screen-news {
+    display:none;
+  }
+
+#holdingcard-screen-news img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.holdingCard .main-block {
+  position: absolute;
+  left: 50px;
+  right: 50px;
+}
 .holdingCard .thumbnail {
   float:left;
   max-height:50vh;
-  background: rgba(0, 64, 129, 0.8);
+  background: rgba(0, 166, 156,0.8);
 }
 .holdingCard .now-and-next {
   display: flex;
   align-content: stretch;
-  position: absolute;
-  left: 50px;
-  right: 50px;
+
 }
 .holdingCard .now-and-next .text {
   background: rgba(0, 166, 156, 0.7);
   color: #fff;
   text-align: left;
 }
+
 .holdingCard .now-and-next .heading {
   font-size: 2em;
   margin-bottom: 10px;
@@ -258,6 +273,23 @@ h1, h2, h3, h4 {
   /* background: rgba(0, 166, 156,0.7); */
   padding: 20px;
 }
+
+.holdingCard .now-playing {
+  background: rgba(8, 134, 126, 0.8);
+  color: #fff;
+  text-align: left;
+  font-size: 1.5em;
+  padding: 20px;
+}
+.holdingCard .now-playing .prefix {
+  opacity: 0.7;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+.holdingCard .now-playing .text {
+  display: inline-block;
+}
+
 /**************************************************/
 /*              [Live Bug]                        */
 /**************************************************/

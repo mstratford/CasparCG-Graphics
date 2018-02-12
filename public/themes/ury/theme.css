@@ -220,6 +220,13 @@ h1, h2, h3, h4 {
   width: 100%;
   min-height: 100%;
 }
+#holdingcard-screen-news {
+  display:none;
+}
+#holdingcard-screen-news img {
+    width: 100%;
+    min-height: 100%;
+}
 .holdingCard .thumbnail {
   float:left;
   max-height:50vh;

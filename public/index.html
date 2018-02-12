@@ -7,32 +7,40 @@
         <link href="/css/fonts/montserrat.css" rel="stylesheet" type="text/css">
         <link href="/themes/{{theme.selected}}/theme.css" rel="stylesheet" type="text/css">
         <link href="/css/animation.css" rel="stylesheet" type="text/css">
+        <link href="/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
 
         <div ng-controller="holdingCardCtrl">
-            <div class="wrapper toggle holdingCard" ng-show="holdingCard.showVideo" >
+            <div class="wrapper toggle holdingCard" ng-show="holdingCard.showAll" >
                 <div ng-controller="themeCtrl">
                     <video ng-src="{{getHoldingcardVideoSrc(theme.selected)}}" id="holdingCardVideo" loop></video>
-                <div id="holdingcard-screen-logo" class="center middle" ng-show="false">
-                    <img src="/themes/{{theme.selected}}/holdingcard-logo.png">
-                </div>
-                <div id="holdingcard-screen-advert" class="center middle" ng-show="false">
-                    <img src="/themes/{{theme.selected}}/holdingcard-advert.png">
-                </div>
                 <div id="holdingcard-screen-timelord" class="top">
-                    <div class="now-and-next {{timelord.nowNextLocation}}">
-                        <img class="thumbnail" src="">
-                        <div class="text">
-                            <h3 class="heading">You're currently watching...</h3>
-                            <h2 class="now"></h2>
-                            <p class="now-desc"></p>
-                            <div class="now-credits"></div>
+                    <div class="main-block {{timelord.nowNextLocation}}">
+                        <div class="now-and-next toggle" ng-show="timelord.showNowNext">
+                            <img class="thumbnail" src="">
+                            <div class="text">
+                                <h3 class="heading">You're currently watching...</h3>
+                                <h2 class="now"></h2>
+                                <p class="now-desc"></p>
+                                <div class="now-credits" ng-show="timelord.showCredits"></div>
+                            </div>
+                        </div>
+                        <div class="now-playing toggle" ng-show="timelord.showNowPlaying">
+                            <span class="prefix">Now Playing: </span><div class="text"></div>
                         </div>
                     </div>
-
                 </div>
+                <div id="holdingcard-screen-news" class="center middle">
+                        <img src="/themes/{{theme.selected}}/holdingcard-news.png">
+                    </div>
+                    <div id="holdingcard-screen-logo" class="center middle" ng-show="false">
+                        <img src="/themes/{{theme.selected}}/holdingcard-logo.png">
+                    </div>
+                    <div id="holdingcard-screen-advert" class="center middle" ng-show="false">
+                        <img src="/themes/{{theme.selected}}/holdingcard-advert.png">
+                    </div>
             </div>
             </div>
         </div>
@@ -352,8 +360,10 @@
         <script type="text/javascript" src="/js/socket.io.js"></script>
         <script type="text/javascript" src="/js/libs/angular.min.js"></script>
         <script type="text/javascript" src="/js/libs/angular-animate.min.js"></script>
+        <script type="text/javascript" src="/js/libs/moment.min.js"></script>
         <script type="text/javascript" src="/js/ng-socket-io.js"></script>
         <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="/js/cg.js"></script>
         <script type="text/javascript" src="/js/timelord.js"></script>
         <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>

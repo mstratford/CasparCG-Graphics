@@ -1,5 +1,6 @@
 var app = angular.module('StarterApp', ['ngRoute', 'LocalStorageModule', 'angularify.semantic', 'socket-io']);
 
+
 app.controller('AppCtrl', ['$scope', '$location', 'socket',
     function($scope, $location, socket){
 
@@ -76,7 +77,7 @@ app.controller('AppCtrl', ['$scope', '$location', 'socket',
             icon: 'red bullseye',
             // live: $scope.dart.show,
         });
-        
+
     	$scope.menu.push({
             name: 'Social Media',
             url: '/social-media',
@@ -311,6 +312,23 @@ function($scope, socket){
     function getHoldingCardData() {
         socket.emit("holdingCard:get");
     }
+
+    socket.on("timelord", function (msg) {
+        $scope.timelord = msg;
+    });
+
+    $scope.$watch('timelord', function() {
+        if ($scope.timelord) {
+            socket.emit("timelord", $scope.timelord);
+        } else {
+            getTimelordData();
+        }
+    }, true);
+
+    function getTimelordData() {
+        socket.emit("timelord:get");
+    }
+
 }
 ]);
 

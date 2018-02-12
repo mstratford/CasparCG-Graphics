@@ -12,6 +12,12 @@ window.Timelord = {
 
 	_$: null,
 	_config: null,
+	lockNow: false,
+	lockNowTime: false,
+	showNews: false,
+	showNewsNow: false,
+	isNews: false,
+	currentShowID: 0,
 
 
 	/**
@@ -25,8 +31,35 @@ window.Timelord = {
 		Timelord._$ = $;
 		Timelord._config = config;
 
+		Timelord.loop();
 		Timelord.updateView();
 
+	},
+
+	loop: function() {
+		var init = moment();
+		Timelord.updateNews(init);
+		var now = moment();
+		var timeout = (now.seconds() - init.seconds() == 0) ?
+		    1000 - now.milliseconds() : 0
+		setTimeout(Timelord.loop,
+			   timeout);
+
+	},
+
+	updateNews: function (t) {
+
+		var second = t.seconds();
+		var minute = t.minutes();
+		if (Timelord.showNewsNow){
+			Timelord.setNews(true);
+		} else if (Timelord.showNews) {
+			if (minute < 2 || (minute >= 59 && second >= 45)) {
+				Timelord.setNews(true);
+			} else {
+				Timelord.setNews(false);
+			}
+		}
 	},
 
 
@@ -49,7 +82,7 @@ window.Timelord = {
 	 * and sets the current and next shows.
 	 */
 	updateShowInfo: function () {
-
+		Timelord._config.next_show_filtering["time"] = Timelord.lockNowTime;
 		Timelord.callAPI({
 			url: Timelord._config.api_endpoints.currentAndNext,
 			data: Timelord._config.next_show_filtering,
@@ -104,13 +137,10 @@ window.Timelord = {
 	 * Sets the current show name with an optional class
 	 *
 	 * @param {String} name
-	 * @param {String} className (optional) Used to highlight the news program
 	 */
 	setCurrentShowName: function (name) {
-
 		Timelord._$('#holdingcard-screen-timelord .now')
 			.html(name);
-
 	},
 
 	/**
@@ -121,7 +151,6 @@ window.Timelord = {
 	setCurrentShowDesc: function (desc) {
 		Timelord._$('#holdingcard-screen-timelord .now-desc')
 			.html(desc);
-
 	},
 
 	/**
@@ -132,7 +161,6 @@ window.Timelord = {
 	setCurrentShowCredits: function (credits) {
 		Timelord._$('#holdingcard-screen-timelord .now-credits')
 			.html(credits);
-
 	},
 
 	/**
@@ -143,7 +171,6 @@ window.Timelord = {
 	setCurrentShowThumbnail: function (url) {
 		Timelord._$('#holdingcard-screen-timelord .thumbnail')
 			.attr('src',url);
-
 	},
 
 	/**
@@ -152,10 +179,40 @@ window.Timelord = {
 	 * @param {String} song
 	 */
 	setSong: function(song) {
-
-		Timelord._$('#current-song').find('.content').text(song);
+		if (song == "") {
+			Timelord._$('#holdingcard-screen-timelord .now-playing').fadeOut();
+		} else {
+			Timelord._$('#holdingcard-screen-timelord .now-playing .text').text(song);
+			Timelord._$('#holdingcard-screen-timelord .now-playing').fadeIn();
+		}
 
 	},
+
+	/**
+	 * Sets the current now next heading.
+	 *
+	 * @param {String} song
+	 */
+	setHeading(text) {
+		Timelord._$('#holdingcard-screen-timelord .heading').text(text);
+	},
+
+	/**
+	 * Sets the news screen status
+	 *
+	 */
+	setNews: function (showNews) {
+		if (!Timelord.isNews && showNews) {
+			Timelord.isNews = true;
+			console.log("Display News");
+			Timelord._$('#holdingcard-screen-news').fadeIn();
+		} else if (Timelord.isNews && !showNews) {
+			Timelord.isNews = false;
+			console.log("Hide News");
+			Timelord._$('#holdingcard-screen-news').fadeOut();
+		}
+	},
+
 
 	/**
 	 * Sets the current and next show names
@@ -163,12 +220,30 @@ window.Timelord = {
 	 * @param {Object} shows
 	 */
 	setShows: function (shows) {
-
-		if (!Timelord.news) {
+		if (typeof shows.current.id == "undefined") {
+			shows.current.id = 0;
+		}
+		if (typeof shows.next == "undefined" || typeof shows.next[0].id == "undefined") {
+			shows.next = [1];
+			shows.next[0].id = 0;
+		}
+		if (!Timelord.lockNow) {
 			Timelord.setCurrentShowName(shows.current.title);
-			Timelord.setCurrentShowDesc(shows.current.desc);
+			Timelord.setCurrentShowDesc(shows.current.desc)
+			if (typeof shows.current.presenters == "undefined") {
+				shows.current.presenters = "";
+			}
 			Timelord.setCurrentShowCredits(shows.current.presenters);
 			Timelord.setCurrentShowThumbnail('https://ury.org.uk' + shows.current.photo);
+
+			Timelord.currentShowID = shows.current.id;
+		}
+		if (Timelord.currentShowID == shows.current.id) {
+			Timelord.setHeading("You're Currently Watching...");
+		} else if (Timelord.currentShowID  == shows.next[0].id) {
+			Timelord.setHeading("Coming up...");
+		} else {
+			Timelord.setHeading("Thanks For Watching...");
 		}
 
 		//Timelord.setNextShowsInfo(shows.next);
