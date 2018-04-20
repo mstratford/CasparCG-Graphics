@@ -12,9 +12,7 @@
   },
   "next_show_filtering": {
 	"n": 2,
-	"filter": [
-	  1
-	]
+	"filter": [1]
   },
   "silence_timeouts": {
 	"short": 5,

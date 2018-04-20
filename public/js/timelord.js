@@ -12,12 +12,13 @@ window.Timelord = {
 
 	_$: null,
 	_config: null,
-	lockNow: false,
-	lockNowTime: false,
+	lockNowDescription: "",
+	lockNowDescriptionCustom: "",
+	lockNowTime: "",
 	showNews: false,
 	showNewsNow: false,
 	isNews: false,
-	currentShowID: 0,
+	currentShow: {},
 
 
 	/**
@@ -82,17 +83,32 @@ window.Timelord = {
 	 * and sets the current and next shows.
 	 */
 	updateShowInfo: function () {
-		Timelord._config.next_show_filtering["time"] = Timelord.lockNowTime;
-		Timelord.callAPI({
-			url: Timelord._config.api_endpoints.currentAndNext,
-			data: Timelord._config.next_show_filtering,
-			success: function (data) {
-				Timelord.setShows(data.payload);
-			},
-			complete: function () {
-				setTimeout(Timelord.updateShowInfo, Timelord._config.request_timeout);
-			}
-		});
+			Timelord.callAPI({
+				url: Timelord._config.api_endpoints.currentAndNext,
+				data: Timelord._config.next_show_filtering,
+				success: function (data) {
+					var nowAndNext = data.payload;
+					if (Timelord.lockNowTime != "") {
+						//Get specified forced current show.
+						var data = Object.assign({},Timelord._config.next_show_filtering);
+						data["n"] = 1;
+						data["time"] = Timelord.lockNowTime;
+						Timelord.callAPI({
+							url: Timelord._config.api_endpoints.currentAndNext,
+							data: data,
+							success: function (data) {
+								Timelord.setShows(data.payload.current, nowAndNext);
+							},
+							complete: function () {
+								setTimeout(Timelord.updateShowInfo, Timelord._config.request_timeout);
+							}
+						});
+					} else {
+						Timelord.setShows(nowAndNext.current, nowAndNext);
+						setTimeout(Timelord.updateShowInfo, Timelord._config.request_timeout);
+					}
+				}
+			});
 
 	},
 
@@ -219,32 +235,47 @@ window.Timelord = {
 	 *
 	 * @param {Object} shows
 	 */
-	setShows: function (shows) {
-		if (typeof shows.current.id == "undefined") {
-			shows.current.id = 0;
+	setShows: function (currentShow, shows) {
+		if (Timelord.lockNowTime != "") {
+			Timelord.currentShow = currentShow;
+		} else {
+			Timelord.currentShow = shows.current;
 		}
-		if (typeof shows.next == "undefined" || typeof shows.next[0].id == "undefined") {
+		if (typeof Timelord.currentShow.id == "undefined") {
+			Timelord.currentShow.id = 0;
+		}
+		if (typeof shows.next == "undefined" || typeof shows.next[0] == "undefined") {
 			shows.next = [1];
 			shows.next[0].id = 0;
+		} else if (typeof shows.next[0].id == "undefined") {
+			shows.next[0].id = 0;
 		}
-		if (!Timelord.lockNow) {
-			Timelord.setCurrentShowName(shows.current.title);
-			Timelord.setCurrentShowDesc(shows.current.desc)
-			if (typeof shows.current.presenters == "undefined") {
-				shows.current.presenters = "";
-			}
-			Timelord.setCurrentShowCredits(shows.current.presenters);
-			Timelord.setCurrentShowThumbnail('https://ury.org.uk' + shows.current.photo);
+		//if (!Timelord.lockNow) {
+		Timelord.setCurrentShowName(Timelord.currentShow.title);
+		Timelord.setCurrentShowDesc(Timelord.currentShow.desc)
+		if (typeof Timelord.currentShow.presenters == "undefined") {
+			Timelord.currentShow.presenters = "";
+		}
+		Timelord.setCurrentShowCredits(Timelord.currentShow.presenters);
+		Timelord.setCurrentShowThumbnail('https://ury.org.uk' + Timelord.currentShow.photo);
 
-			Timelord.currentShowID = shows.current.id;
-		}
-		if (Timelord.currentShowID == shows.current.id) {
-			Timelord.setHeading("You're Currently Watching...");
-		} else if (Timelord.currentShowID  == shows.next[0].id) {
-			Timelord.setHeading("Coming up...");
+		//Timelord.currentShowID = shows.current.id;
+		//}
+		if (Timelord.lockNowDescription == "Custom") {
+			Timelord.setHeading(Timelord.lockNowDescriptionCustom);
+		} else if (Timelord.lockNowDescription != "Automatic") {
+			Timelord.setHeading(Timelord.lockNowDescription)
 		} else {
-			Timelord.setHeading("Thanks For Watching...");
+			var currentEpoch = Math.round((new Date).getTime() / 1000);
+			if (parseInt(Timelord.currentShow.end_time) < currentEpoch) {
+				Timelord.setHeading("Thanks For Watching...");
+			} else if (Timelord.currentShow.id == shows.next[0].id) {
+				Timelord.setHeading("Coming up...");
+			} else {
+				Timelord.setHeading("You're Currently Watching!");
+			}
 		}
+
 
 		//Timelord.setNextShowsInfo(shows.next);
 
