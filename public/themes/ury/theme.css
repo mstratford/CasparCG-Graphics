@@ -227,6 +227,11 @@ h1, h2, h3, h4 {
     width: 100%;
     min-height: 100%;
 }
+.holdingCard .main-block {
+  position: absolute;
+  left: 50px;
+  right: 50px;
+}
 .holdingCard .thumbnail {
   float:left;
   max-height:50vh;
@@ -235,8 +240,6 @@ h1, h2, h3, h4 {
 .holdingCard .now-and-next {
   display: flex;
   align-content: stretch;
-  position: absolute;
-  margin: 0 50px;
 }
 .holdingCard .now-and-next .text {
   background: rgba(0, 64, 129, 0.7);
@@ -261,8 +264,23 @@ h1, h2, h3, h4 {
 }
 .holdingCard .now-and-next .now-credits {
   font-size: 1.5em;
-  background: rgba(0,45,90,0.9);
   padding: 20px;
+}
+.holdingCard .now-playing {
+  background: rgba(0,45,90,0.8);
+  display: none;
+  color: #fff;
+  text-align: left;
+  font-size: 1.5em;
+  padding: 20px;
+}
+.holdingCard .now-playing .prefix {
+  opacity: 0.7;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+.holdingCard .now-playing .text {
+  display: inline-block;
 }
 /**************************************************/
 /*              [Live Bug]                        */
