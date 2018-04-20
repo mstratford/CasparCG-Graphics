@@ -276,6 +276,7 @@ h1, h2, h3, h4 {
 
 .holdingCard .now-playing {
   background: rgba(8, 134, 126, 0.8);
+  display: none;
   color: #fff;
   text-align: left;
   font-size: 1.5em;
