@@ -43,8 +43,7 @@ window.Timelord = {
 		var now = moment();
 		var timeout = (now.seconds() - init.seconds() == 0) ?
 		    1000 - now.milliseconds() : 0
-		setTimeout(Timelord.loop,
-			   timeout);
+		setTimeout(Timelord.loop, timeout);
 
 	},
 
@@ -220,11 +219,9 @@ window.Timelord = {
 	setNews: function (showNews) {
 		if (!Timelord.isNews && showNews) {
 			Timelord.isNews = true;
-			console.log("Display News");
 			Timelord._$('#holdingcard-screen-news').fadeIn();
 		} else if (Timelord.isNews && !showNews) {
 			Timelord.isNews = false;
-			console.log("Hide News");
 			Timelord._$('#holdingcard-screen-news').fadeOut();
 		}
 	},
@@ -250,7 +247,7 @@ window.Timelord = {
 		} else if (typeof shows.next[0].id == "undefined") {
 			shows.next[0].id = 0;
 		}
-		//if (!Timelord.lockNow) {
+
 		Timelord.setCurrentShowName(Timelord.currentShow.title);
 		Timelord.setCurrentShowDesc(Timelord.currentShow.desc)
 		if (typeof Timelord.currentShow.presenters == "undefined") {
@@ -259,8 +256,6 @@ window.Timelord = {
 		Timelord.setCurrentShowCredits(Timelord.currentShow.presenters);
 		Timelord.setCurrentShowThumbnail('https://ury.org.uk' + Timelord.currentShow.photo);
 
-		//Timelord.currentShowID = shows.current.id;
-		//}
 		if (Timelord.lockNowDescription == "Custom") {
 			Timelord.setHeading(Timelord.lockNowDescriptionCustom);
 		} else if (Timelord.lockNowDescription != "Automatic") {
@@ -275,9 +270,6 @@ window.Timelord = {
 				Timelord.setHeading("You're Currently Watching!");
 			}
 		}
-
-
-		//Timelord.setNextShowsInfo(shows.next);
 
 	},
 
