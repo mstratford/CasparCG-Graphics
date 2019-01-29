@@ -1,0 +1,46 @@
+<div class="ui form segment">
+  <h2>Holding Card</h2>
+  <div class="ui divider"></div>
+  <div class="inline field">
+    <checkbox size="large" ng-model="holdingCard.showAll" type="toggle">Show All</checkbox>
+    <checkbox size="large" ng-model="holdingCard.play" type="toggle">Play BG Video</checkbox>
+  </div>
+  <div class="ui divider"></div>
+  <h2>Timelord</h2>
+  <div class="inline field">
+    <checkbox size="large" ng-model="timelord.showNowNext" type="toggle">Show Now &amp; Next</checkbox>
+    <div class="ui divider"></div>
+    <div class="five wide field">
+        <label>Force Time:</label>
+        <input id="Timelord-lockNowTime" name="lockNowTime" value="" placeholder="Time/Date" type="text" ng-model="timelord.lockNowTime" />
+    </div>
+    <div class="five field">
+        <label>Force Time Header</label>
+        <dropdown title="Force Time Header"  ng-model="timelord.lockNowDescription">
+          <dropdown-group>Automatic</dropdown-group>
+          <dropdown-group>Custom</dropdown-group>
+          <dropdown-group>Coming up...</dropdown-group>
+          <dropdown-group>Starting shortly...</dropdown-group>
+          <dropdown-group>You're currently watching...</dropdown-group>
+          <dropdown-group>We'll be back shortly...</dropdown-group>
+          <dropdown-group>Live now...</dropdown-group>
+          <dropdown-group>Thanks for watching!</dropdown-group>
+        </dropdown>
+    </div>
+    <div class="five wide field">
+        <label>Custom Header:</label>
+        <input id="Timelord-lockNowDescriptionCustom" name="lockNowDescriptionCustom" value="" placeholder="eg 'Join us soon!'" type="text" ng-model="timelord.lockNowDescriptionCustom" />
+    </div>
+    <div class="ui divider"></div>
+    <h3>News</h3>
+    <div class="five wide field">
+      <checkbox size="large" ng-model="timelord.showNews" type="toggle">Enable Automated News Screen</checkbox>
+    </div>
+    <div class="five wide field">
+      <checkbox size="large" ng-model="timelord.showNewsNow" type="toggle">Force News Now</checkbox>
+    </div>
+    <div class="ui divider"></div>
+    <checkbox size="large" ng-model="timelord.showCredits" type="toggle">Show Credits</checkbox>
+    <checkbox size="large" ng-model="timelord.showNowPlaying" type="toggle">Show Now Playing</checkbox>
+  </div>
+</div>

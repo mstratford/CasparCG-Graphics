@@ -67,6 +67,12 @@ h1, h2, h3, h4 {
     margin: 0 auto;
 }
 
+.middle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .float-left {
     float: left;
 }
@@ -189,6 +195,22 @@ h1, h2, h3, h4 {
     text-shadow:1px -1px 0px #000;
 }
 
+/******************************************************/
+/*              [Holding Card]                        */
+/******************************************************/
+
+.holdingCard.wrapper {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.holdingCard video {
+    width: 100%;
+    min-height: 100%;
+}
 
 /**************************************************/
 /*              [Live Bug]                        */
@@ -664,6 +686,45 @@ h1, h2, h3, h4 {
         margin-bottom: 5px;
     }
 
+
+/**************************************************/
+/*              [Social Media]                    */
+/**************************************************/
+
+.social-media {
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.0);
+    font-size: 0.0vw;
+    border-radius: 5px;
+    background-clip: padding-box;
+  }
+
+  .social-media .big-center iframe {
+      -webkit-transform:scale(1.0);
+      -moz-transform: scale(1.0);
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+  }
+
+  .social-media twitterwidget::shadow .Tweet-brand, .social-media twitterwidget::shadow .Tweet-actions {
+    display: none;
+  }
+
+  .instagram-media .instagram-media-rendered {
+      max-height: 620px;
+  }
+
+  .twitter-tweet .twitter-tweet-rendered {
+      max-height: 620px;
+  }
+
+  .fb-post .fb_iframe_widget .fb_iframe_widget_fluid {
+      max-height: 620px;
+      background-color: #FFF;
+  }
 
 /**************************************************/
 /*              [Swimming]                        */
