@@ -9,7 +9,7 @@ var io = require('socket.io').listen(server);
 var theme = {selected: "ury"};
 var bug = {livetext: "Live", locationtext: ''};
 var holdingCard = {video: "holdingcard.mp4", autoplay:true, loop: true, showAll: true, play: true, volume: false};
-var timelord = { nowNextLocation: "middle", lockNowDescription: "Automatic", lockNowDescriptionCustom: "", caption: "Join the conversation Twitter: @ury1350 Text: 07851 101 313", lockNowTime: "", showNowNext: true, showCredits:true, showDesc:false, showNowPlaying:true, showNews: true, showNewsNow: false};
+var timelord = { nowNextLocation: "middle", lockNowDescription: "Automatic", lockNowDescriptionCustom: "", caption: "Join the conversation Twitter: @ury1350 Text: 07851 101 313", nowPlayingPrefix: "Now Playing: ", lockNowTime: "", showNowNext: true, showCredits:true, showDesc:false, showNowPlaying:true, showNews: true, showNewsNow: false};
 var socialmedia = {tweet: "", pos: "bottom center", tweethtml: ""};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
 

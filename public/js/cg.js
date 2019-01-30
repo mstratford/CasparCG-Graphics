@@ -57,6 +57,7 @@ function($scope, socket){
         Timelord.lockNowDescription = msg.lockNowDescription;
         Timelord.lockNowDescriptionCustom = msg.lockNowDescriptionCustom;
         Timelord.caption = msg.caption;
+        Timelord.nowPlayingPrefix = msg.nowPlayingPrefix;
         Timelord.lockNowTime = msg.lockNowTime;
         Timelord.showNews = msg.showNews;
         Timelord.showNewsNow = msg.showNewsNow;
