@@ -31,6 +31,10 @@
         <label>Custom Header:</label>
         <input id="Timelord-lockNowDescriptionCustom" name="lockNowDescriptionCustom" value="" placeholder="eg 'Join us soon!'" type="text" ng-model="timelord.lockNowDescriptionCustom" />
     </div>
+    <div class="five field">
+      <label>Caption Text:</label>
+      <input id="Timelord-captionText" name="captionText" value="" placeholder="eg 'Brought to you by ury'" type="text" ng-model="timelord.caption" />
+    </div>
     <div class="ui divider"></div>
     <h3>News</h3>
     <div class="five wide field">
@@ -42,5 +46,6 @@
     <div class="ui divider"></div>
     <checkbox size="large" ng-model="timelord.showCredits" type="toggle">Show Credits</checkbox>
     <checkbox size="large" ng-model="timelord.showNowPlaying" type="toggle">Show Now Playing</checkbox>
+    <checkbox size="large" ng-model="timelord.showDesc" type="toggle">Show Description</checkbox>
   </div>
 </div>

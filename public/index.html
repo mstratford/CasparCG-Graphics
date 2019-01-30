@@ -22,11 +22,12 @@
                             <div class="text">
                                 <h3 class="heading">You're currently watching...</h3>
                                 <h2 class="now"></h2>
-                                <p class="now-desc"></p>
+                                <p class="now-desc" ng-show="timelord.showDesc"></p>
                                 <div class="now-credits" ng-show="timelord.showCredits"></div>
+                                <div class="caption" ng-show="timelord.caption"></div>
                             </div>
                         </div>
-                        <div class="now-playing toggle" ng-show="timelord.showNowPlaying">
+                        <div class="now-playing toggle" ng-style="{'visibility': timelord.showNowPlaying ? 'visible' : 'hidden'}">
                             <span class="prefix">Now Playing: </span><div class="text"></div>
                         </div>
                     </div>

@@ -14,6 +14,7 @@ window.Timelord = {
 	_config: null,
 	lockNowDescription: "",
 	lockNowDescriptionCustom: "",
+	caption: "",
 	lockNowTime: "",
 	showNews: false,
 	showNewsNow: false,
@@ -213,6 +214,15 @@ window.Timelord = {
 	},
 
 	/**
+	 * Sets the current now next caption.
+	 *
+	 * @param {String} caption
+	 */
+	setCaption(text) {
+		Timelord._$('#holdingcard-screen-timelord .caption').text(text);
+	},
+
+	/**
 	 * Sets the news screen status
 	 *
 	 */
@@ -255,7 +265,7 @@ window.Timelord = {
 		}
 		Timelord.setCurrentShowCredits(Timelord.currentShow.presenters);
 		Timelord.setCurrentShowThumbnail('https://ury.org.uk' + Timelord.currentShow.photo);
-
+		Timelord.setCaption(Timelord.caption);
 		if (Timelord.lockNowDescription == "Custom") {
 			Timelord.setHeading(Timelord.lockNowDescriptionCustom);
 		} else if (Timelord.lockNowDescription != "Automatic") {

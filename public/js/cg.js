@@ -56,6 +56,7 @@ function($scope, socket){
         $scope.timelord = msg;
         Timelord.lockNowDescription = msg.lockNowDescription;
         Timelord.lockNowDescriptionCustom = msg.lockNowDescriptionCustom;
+        Timelord.caption = msg.caption;
         Timelord.lockNowTime = msg.lockNowTime;
         Timelord.showNews = msg.showNews;
         Timelord.showNewsNow = msg.showNewsNow;
