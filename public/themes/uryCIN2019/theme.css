@@ -1,0 +1,462 @@
+/*
+Name: YUSU CIN 2019
+Desc: The theme used for CIN 2019
+Date: 30-01-19
+*/
+
+@font-face {
+    font-family: VimSM;
+    font-weight: bold;
+    src: url("VimSM.otf") format("opentype");
+}
+@font-face {
+    font-family: Dinasti;
+    font-weight: bold;
+    src: url("DINASTI-Bold.otf") format("opentype");
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing:border-box;                                   /* This sets all elements to be the actual set dimensions, disregarding padding and borders */
+  webkit-backface-visibility: hidden;                     /* Hide the backface of elements - usuefull for 3d effects */
+  -webkit-transition: translate3d(0,0,0);                  /* Turns on hardware acceleration - not known to be of benefit in CCG, but won't hurt */
+}
+
+body {
+    padding: 50px; /* Safe area */
+    font-family: 'Montserrat', sans-serif;
+    background:transparent;                          /* The HTML consumer actually makes your background transparent by default, unless a color or image is specified - but this might be usefull when debugging in browsers */
+    overflow:hidden;                                 /* Hide any overflowing elements - to disable scollbars */
+    -webkit-font-smoothing:antialiased !important;
+}
+
+/* Keying Options */
+.Greenscreen {
+    background: #00FF00;
+}
+.Bluescreen {
+    background: #0000FF;
+}
+
+
+@-webkit-keyframes moving-gradient {
+    0% { background-position: left bottom; }
+    100% { background-position: right bottom; }
+}
+
+h1, h2, h3, h4 {
+    margin:0;
+    padding:0;
+}
+
+.large {
+    top: -13px;
+    font-size: 40px !important;
+}
+
+/**************************************************/
+/*              [Layout]                          */
+/**************************************************/
+.left{
+    position: absolute;
+    left: 50px;
+}
+
+.right {
+    position: absolute;
+    right: 50px;
+    text-align: right;
+}
+
+.bottom {
+    bottom: 50px;
+}
+
+.fullwidth {
+  width: 1180px;
+  }
+
+.top {
+    top: 50px;
+}
+
+.center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.middle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+
+.wrapper {
+    overflow: hidden;
+}
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.row:after {
+  display: table;
+  content: " ";
+}
+
+.row:after {
+  clear: both;
+}
+/**************************************************/
+/*              [Lower Third]                     */
+/**************************************************/
+
+.lowerthird {
+    min-width: 20%;
+    border-radius: 5px;
+    background-clip: padding-box;
+}
+
+.lowerthird h1 {
+    color: #fff;
+    font-size: 40px;
+    font-size: 2.5vw;
+    font-weight: normal;
+    padding: 5px 8px;
+    background-color: #BC204B;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.lowerthird h2 {
+    color: #fff;
+    font-size: 35px;
+    font-size: 2vw;
+    font-weight: normal;
+    padding: 5px 8px;
+
+    background-color: #1f1a34;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.lowerthird.bottom.fullwidth {
+    position: absolute;
+    left: 50px;
+}
+
+/******************************************************/
+/*              [Holding Card]                        */
+/******************************************************/
+
+.holdingCard.wrapper {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.holdingCard video {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+
+/******************************************************/
+/*              [Timelord]                        */
+/******************************************************/
+
+#holdingcard-screen-advert img {
+  width: 100%;
+  min-height: 100%;
+}
+
+#holdingcard-screen-news {
+    display:none;
+  }
+
+#holdingcard-screen-news img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.holdingCard .main-block {
+  position: absolute;
+  bottom: 15%;
+  left: 50px;
+  right: 50px;
+}
+.holdingCard .thumbnail {
+  float:left;
+  max-height:50vh;
+  background: rgba(0, 166, 156,0.8);
+  display: none;
+}
+.holdingCard .now-and-next {
+  display: flex;
+  align-content: stretch;
+  width: 100%;
+}
+.holdingCard .now-and-next .text {
+  /* background: rgba(0, 166, 156, 0.7); */
+  color: #00A69C;
+  font-size: 3em;
+  font-family: VimSM;
+  text-align: left;
+  width: 100%
+}
+.holdingCard .now-and-next .heading {
+  font-family: Dinasti;
+  color: #333333;
+  font-size: 1em;
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+.holdingCard .now-and-next .now {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  padding: 0 20px 20px 20px;
+}
+.holdingCard .now-and-next .now-desc {
+  font-size: 1.5em;
+  font-style: italic;
+  background: rgba(0, 166, 156,0.8);
+  padding: 20px;
+}
+.holdingCard .now-and-next .now-credits {
+  font-size: 1.5em;
+  /* background: rgba(0, 166, 156,0.7); */
+  padding: 20px;
+  opacity: 1;
+  /* height: auto;*/
+}
+
+.holdingCard .now-and-next .caption {
+  font-size: 0.8em;
+  font-family: Dinasti;
+  text-align: right;
+
+  background: #333333;
+  color: #ffffff;
+  padding: 10px 20px;
+}
+
+.holdingCard .now-playing {
+  background: rgba(8, 134, 126, 0.8);
+  display: none;
+  color: #fff;
+  text-align: left;
+  font-size: 2em;
+  padding: 15px 20px;
+  height: 2em;
+}
+.holdingCard .now-playing .prefix {
+  opacity: 0.7;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+.holdingCard .now-playing .text {
+  display: inline-block;
+}
+
+
+.holdingCard.wrapper, .holdingCard .main-block, .holdingCard .now,
+.holdingCard .heading,
+.holdingCard .now-credits, .holdingCard .caption, .holdingCard .now-playing {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.holdingCard.lowerThird .main-block {
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* transition-delay: 1.5s; */
+}
+.holdingCard.lowerThird.wrapper {
+  top: 800px;
+  height: calc(100% - 800px)
+  /* transition-delay: 1.5s; */
+}
+.holdingCard.lowerThird .heading {
+  margin-bottom: 0;
+}
+.holdingCard.lowerThird .now {
+  font-size: 1.4em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  /* transition-delay: 1s; */
+}
+.holdingCard.lowerThird .now-credits {
+  font-size: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  /* visibility: hidden !important; */
+  /*height: 0; */
+}
+.holdingCard.lowerThird .caption {
+  bottom: 0;
+}
+.holdingCard.lowerThird .now-playing {
+  height: 0;
+  padding: 0;
+}
+
+/**************************************************/
+/*              [Live Bug]                        */
+/**************************************************/
+.bug {
+    display:inline;
+    white-space: nowrap;
+    clear:none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+}
+
+.bug h1 {
+    color: #fff;
+    font-size: 30px;
+    font-size: 1.55vw;
+    line-height: 1.8vw;
+    font-weight: normal;
+    float: left;
+    padding: 3px 10px;
+    margin-right: 0px;
+    background-color: #BC204B;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.black {
+    background-color: #1f1a34 !important;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.white {
+  background-color: #eee !important;
+  color: #000 !important;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+/**************************************************/
+/*              [Logo]                            */
+/**************************************************/
+
+.logo {
+    opacity: 0.5;
+    top: 40px;
+    max-width:200px;
+}
+.logo img {
+    width: 100%;
+}
+
+.logo.toggle.ng-leave,
+.logo.toggle.ng-hide-add,
+.logo.toggle.ng-hide-remove.ng-hide-remove-active {
+    opacity: 0.5;
+}
+
+/*
+ *===================================
+ *         Grid
+ *===================================
+ */
+ .grid {
+
+    width: 650px;
+    text-align: center;
+    background-clip: padding-box;
+  }
+    .grid h1 {
+        color:  #ffffff;
+        font-size: 40px;
+        font-size: 2.5vw;
+        font-weight: normal;
+        padding: 5px;
+        background-color: #BC204B;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+    }
+
+    .grid .gridleft, .grid .gridright {
+        float: left;
+        line-height: 40px;
+        background-color: #1f1a34;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+        font-size: 25px;
+    }
+
+    .grid .gridleft {
+        padding-left: 10px;
+        text-align: left;
+        width: 80%;
+    }
+
+    .grid .gridright {
+        width: 20%;
+        border-left: 3px solid #fff;
+    }
+
+    .grid .row {
+        color: #fff;
+        border-top: 3px solid #fff;
+    }
+
+    .grid .row:last-child {
+        margin-bottom: 5px;
+    }
+
+
+/**************************************************/
+/*              [Social Media]                    */
+/**************************************************/
+
+.social-media {
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.0);
+    font-size: 0.0vw;
+    border-radius: 5px;
+    background-clip: padding-box;
+  }
+
+  .social-media .big-center iframe {
+      -webkit-transform:scale(1.0);
+      -moz-transform: scale(1.0);
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+  }
+
+  .social-media twitterwidget::shadow .Tweet-brand, .social-media twitterwidget::shadow .Tweet-actions {
+    display: none;
+  }
+
+  .instagram-media .instagram-media-rendered {
+      max-height: 620px;
+  }
+
+  .twitter-tweet .twitter-tweet-rendered {
+      max-height: 620px;
+  }
+
+  .fb-post .fb_iframe_widget .fb_iframe_widget_fluid {
+      max-height: 620px;
+      background-color: #FFF;
+  }
+

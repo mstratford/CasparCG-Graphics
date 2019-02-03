@@ -6,18 +6,12 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-var theme = {selected: "roses2017"};
+var theme = {selected: "ury"};
 var bug = {livetext: "Live", locationtext: ''};
-var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
-var score = {};
-var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
-var rugby = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
-var basketball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
-var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2:0, leg1: 0, leg2: 0, score1:501, score2:501 };
-var swimming = {order: ''};
+var holdingCard = {video: "holdingcard.mp4", autoplay:true, loop: true, showAll: true, play: true, volume: false};
+var timelord = { lockNowDescription: "Automatic", lockNowDescriptionCustom: "", caption: "Join the conversation! ury.org.uk &bull; @ury1350 &bull; 07851 101 313", nowPlayingPrefix: "Now Playing: ", lockNowTime: "", showNowNext: true, showCredits:true, showDesc:false, showNowPlaying:true, showNews: false, showNewsNow: false};
+var socialmedia = {tweet: "", pos: "bottom center", tweethtml: ""};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
-var archery = {};
-var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -25,8 +19,6 @@ var stopwatch = new Stopwatch();
 stopwatch.on('tick:stopwatch', function(time) {
 	io.sockets.emit("clock:tick", time);
 });
-
-
 
 io.on('connection', function(socket) {
 	console.log("Client Socket Connected");
@@ -86,6 +78,35 @@ io.on('connection', function(socket) {
 	});
 
 	/*
+	 *		Holding Card
+	 */
+	socket.on("holdingCard", function(msg) {
+		holdingCard = msg;
+		io.sockets.emit("holdingCard", msg);
+	});
+
+	socket.on("holdingCard:get", function(msg) {
+		io.sockets.emit("holdingCard", holdingCard);
+	});
+
+	/*
+	 *		Timelord
+	 */
+	socket.on("timelord", function(msg) {
+		timelord = msg;
+		io.sockets.emit("timelord", msg);
+	});
+
+	socket.on("timelord:get", function(msg) {
+		io.sockets.emit("timelord", timelord);
+	});
+
+
+
+
+
+
+	/*
 	 * 		Lower Thirds
 	 */
 	socket.on("lowerthird:left", function(msg) {
@@ -116,131 +137,17 @@ io.on('connection', function(socket) {
 		io.sockets.emit("lowerthird:hideall");
 	});
 
-	/*
-	 * 		Boxing
-	 */
-	socket.on("boxing", function(msg) {
-        boxing = msg;
-		io.sockets.emit("boxing", msg);
-	});
-
-    socket.on("boxing:get", function(msg) {
-		io.sockets.emit("boxing", boxing);
-	});
-
-	/*
-	 * 		Roses Score
-	 */
-	socket.on("score", function(msg) {
-        score = msg;
-		io.sockets.emit("score", msg);
-	});
-	socket.on("lancScore", function(msg){
-		io.sockets.emit("lancScore", msg);
-	});
-	socket.on("yorkScore", function(msg){
-		io.sockets.emit("yorkScore", msg);
-	});
-
-    socket.on("score:get", function(msg) {
-		io.sockets.emit("score", score);
-	});
-
-	 /*
-	 * 		Football
-	 */
-	socket.on("football", function(msg) {
-        football = msg;
-		io.sockets.emit("football", msg);
-	});
-
-    socket.on("football:get", function(msg) {
-		io.sockets.emit("football", football);
-	});
-
-	/*
-	* 		Rugby
-	*/
- 	socket.on("rugby", function(msg) {
-			 rugby = msg;
-	 io.sockets.emit("rugby", msg);
- 	});
-
-	 socket.on("rugby:get", function(msg) {
-	 io.sockets.emit("rugby", rugby);
-	 });
-
-	/*
-	 * 		Darts
-	 */
-	socket.on("dart", function(msg) {
-        dart = msg;
-		io.sockets.emit("dart", msg);
-	});
-
-    socket.on("dart:get", function(msg) {
-        io.sockets.emit("dart", dart);
-    });
-
     /*
-	 * 		Swimming
+	 * 		Social Media
 	 */
-	socket.on("swimming", function(msg) {
-        swimming = msg;
-
-        swimming.order = (swimming.order).replace(/[^1-8]+/, '');
-        swimming.order = (swimming.order).replace(/(.).*\1/, function (x) {return x.substring(0, x.length - 1)})
-
-        if(!('pos1name' in swimming) && swimming.order != '') {
-            swimming.splittime = stopwatch.getTime().replace(/^0/, '');
-        }
-
-        for(i = 1; i <= 8; i++){
-            swimming['pos' + i + 'name'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'name');
-            swimming['pos' + i + 'team'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'team');
-            swimming['pos' + i + 'lane'] = (swimming.order).charAt(i-1);
-        }
-
-		io.sockets.emit("swimming", msg);
+	socket.on("socialmedia", function(msg) {
+        socialmedia = msg;
+		io.sockets.emit("socialmedia", msg);
 	});
 
-    socket.on("swimming:get", function(msg) {
-        io.sockets.emit("swimming", swimming);
+    socket.on("socialmedia:get", function(msg) {
+        io.sockets.emit("socialmedia", socialmedia);
     });
-
-		/*
- 	 * 		Basketball
- 	 */
- 	socket.on("basketball", function(msg) {
-      basketball = msg;
- 		io.sockets.emit("basketball", msg);
- 	});
-
-  socket.on("basketball:get", function(msg) {
- 		io.sockets.emit("basketball", basketball);
- 	});
-
-	socket.on("archery", function(msg) {
-        archery = msg;
-		io.sockets.emit("archery", msg);
-	});
-
-		socket.on("archery:get", function(msg) {
-				io.sockets.emit("archery", archery);
-		});
-
-		/*
-		* Badminton
-		*/
-		socket.on("badminton", function(msg) {
-	        badminton = msg;
-			io.sockets.emit("badminton", msg);
-		});
-
-    socket.on("badminton:get", function(msg) {
-        io.sockets.emit("badminton", badminton);
-    });
-
 
 });
 

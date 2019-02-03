@@ -5,6 +5,14 @@
   <div class="inline field">
     <checkbox size="large" ng-model="general.showLogo" type="toggle">Show Logo</checkbox>
     <checkbox size="large" ng-model="general.showClock" type="toggle">Show Clock</checkbox>
+    <div class="five field">
+        <label>Keying:</label>
+        <dropdown title="Keying"  ng-model="theme.backgroundKey">
+          <dropdown-group>None</dropdown-group>
+          <dropdown-group>Greenscreen</dropdown-group>
+          <dropdown-group>Bluescreen</dropdown-group>
+        </dropdown>
+    </div>
   </div>
 
 <div class="ui divider"></div>
