@@ -9,14 +9,14 @@
         <link href="/css/animation.css" rel="stylesheet" type="text/css">
     </head>
 
-    <body>
+    <body ng-controller="themeCtrl" class="{{theme.backgroundKey}}">
 
         <div ng-controller="holdingCardCtrl">
-            <div class="wrapper toggle holdingCard" ng-show="holdingCard.showAll" >
+            <div class="wrapper holdingCard {{holdingCard.animationCSS}}" ng-show="holdingCard.showAll">
                 <div ng-controller="themeCtrl">
                     <video ng-src="{{getHoldingcardVideoSrc(theme.selected)}}" id="holdingCardVideo" loop></video>
                 <div id="holdingcard-screen-timelord" class="top">
-                    <div class="main-block {{timelord.nowNextLocation}}">
+                    <div class="main-block">
                         <div class="now-and-next toggle" ng-show="timelord.showNowNext">
                             <img class="thumbnail" src="">
                             <div class="text">

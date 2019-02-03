@@ -1,9 +1,10 @@
 <div class="ui form segment">
-  <h2>Holding Card</h2>
+  <h2>Timelord Graphics</h2>
   <div class="ui divider"></div>
   <div class="inline field">
     <checkbox size="large" ng-model="holdingCard.showAll" type="toggle">Show All</checkbox>
     <checkbox size="large" ng-model="holdingCard.play" type="toggle">Play BG Video</checkbox>
+    <checkbox size="large" ng-model="holdingCard.lowerThird" type="toggle">Full Screen / Lower Third</checkbox>
   </div>
   <div class="ui divider"></div>
   <h2>Timelord</h2>
@@ -39,7 +40,7 @@
       <label>Now Playing prefix:</label>
       <dropdown title="Now Playing prefix"  ng-model="timelord.nowPlayingPrefix">
         <dropdown-group>Now Playing: </dropdown-group>
-        <dropdown-group>We will be back after: </dropdown-group>
+        <dropdown-group>We'll be back after: </dropdown-group>
       </dropdown>
     </div>
     <div class="ui divider"></div>

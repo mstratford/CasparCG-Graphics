@@ -30,6 +30,14 @@ body {
     -webkit-font-smoothing:antialiased !important;
 }
 
+/* Keying Options */
+.Greenscreen {
+    background: #00FF00;
+}
+.Bluescreen {
+    background: #0000FF;
+}
+
 
 @-webkit-keyframes moving-gradient {
     0% { background-position: left bottom; }
@@ -152,7 +160,6 @@ h1, h2, h3, h4 {
 /*              [Holding Card]                        */
 /******************************************************/
 
-
 .holdingCard.wrapper {
     top: 0;
     left: 0;
@@ -165,6 +172,8 @@ h1, h2, h3, h4 {
     width: 100%;
     min-height: 100%;
 }
+
+
 
 /******************************************************/
 /*              [Timelord]                        */
@@ -186,6 +195,7 @@ h1, h2, h3, h4 {
 
 .holdingCard .main-block {
   position: absolute;
+  bottom: 15%;
   left: 50px;
   right: 50px;
 }
@@ -216,7 +226,7 @@ h1, h2, h3, h4 {
   padding: 0 20px;
 }
 .holdingCard .now-and-next .now {
-  font-size: 3em;
+  font-size: 2.5em;
   margin-bottom: 10px;
   padding: 0 20px 20px 20px;
 }
@@ -230,6 +240,8 @@ h1, h2, h3, h4 {
   font-size: 1.5em;
   /* background: rgba(0, 166, 156,0.7); */
   padding: 20px;
+  opacity: 1;
+  /* height: auto;*/
 }
 
 .holdingCard .now-and-next .caption {
@@ -249,6 +261,7 @@ h1, h2, h3, h4 {
   text-align: left;
   font-size: 2em;
   padding: 15px 20px;
+  height: 2em;
 }
 .holdingCard .now-playing .prefix {
   opacity: 0.7;
@@ -257,6 +270,52 @@ h1, h2, h3, h4 {
 }
 .holdingCard .now-playing .text {
   display: inline-block;
+}
+
+
+.holdingCard.wrapper, .holdingCard .main-block, .holdingCard .now,
+.holdingCard .heading,
+.holdingCard .now-credits, .holdingCard .caption, .holdingCard .now-playing {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.holdingCard.lowerThird .main-block {
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* transition-delay: 1.5s; */
+}
+.holdingCard.lowerThird.wrapper {
+  top: 800px;
+  height: calc(100% - 800px)
+  /* transition-delay: 1.5s; */
+}
+.holdingCard.lowerThird .heading {
+  margin-bottom: 0;
+}
+.holdingCard.lowerThird .now {
+  font-size: 1.4em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  /* transition-delay: 1s; */
+}
+.holdingCard.lowerThird .now-credits {
+  font-size: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  /* visibility: hidden !important; */
+  /*height: 0; */
+}
+.holdingCard.lowerThird .caption {
+  bottom: 0;
+}
+.holdingCard.lowerThird .now-playing {
+  height: 0;
+  padding: 0;
 }
 
 /**************************************************/

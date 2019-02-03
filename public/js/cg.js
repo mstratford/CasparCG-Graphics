@@ -27,12 +27,19 @@ app.controller('holdingCardCtrl', ['$scope', 'socket',
 function($scope, socket){
     holdingCardVideo = document.getElementById("holdingCardVideo");
     socket.on("holdingCard", function (msg) {
+        var oldScope = $scope.holdingCard
         $scope.holdingCard = msg;
             if ($scope.holdingCard.play) {
                 holdingCardVideo.play();
             } else {
                 holdingCardVideo.pause();
             }
+        // If we've suddenly changed to or from lower third...
+        if (oldScope.lowerThird != $scope.holdingCard.lowerThird) {
+            if ($scope.holdingCard.lowerThird == true) {
+                $scope.holdingCard.animationCSS = "lowerThird";
+            }
+        }
     });
 
     $scope.$watch('holdingCard', function() {
