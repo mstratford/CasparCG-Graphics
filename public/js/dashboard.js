@@ -22,10 +22,10 @@ app.controller('AppCtrl', ['$scope', '$location', 'socket',
         });
 
         $scope.menu.push({
-            name: 'Holding Card',
+            name: 'Timelord',
             url: '/holding',
             type: 'link',
-            icon: 'settings',
+            icon: 'blue clock',
         });
 
         $scope.menu.push({
