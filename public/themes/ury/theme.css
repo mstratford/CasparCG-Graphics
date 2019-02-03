@@ -136,65 +136,6 @@ h1, h2, h3, h4 {
     left: 50px;
 }
 
-/**************************************************/
-/*              [Boxing Score]                    */
-/**************************************************/
-.boxing-score {
-    background-color: #BC204B;
-    width: 15%;
-}
-
-.score-inner {
-    color: #fff;
-    text-align: center;
-    padding: 15px 60px 15px 60px;
-}
-
-.timer {
-    top: -2px;
-    font-size: 30px !important;
-}
-
-.score-inner h1 {
-    font-size: 35px;
-}
-
-.red-moving, .moving {
-    height: 40px;
-    width: 500%;
-
-    background: linear-gradient(to left, rgba(31,26,52,1) 0%, rgba(31,26,52,1) 71%, rgba(75,64,127,1) 85%, rgba(31,26,52,1) 98%, rgba(31,26,52,1) 100%) repeat;
-}
-
-.bar {
-  overflow-x: hidden;
-  overflow-y:hidden;
-  width: 100%;
-  border-radius: 2px;
-}
-
-.bar .gradient-overlay {
-    position: absolute;
-    width: inherit;
-    height: 40px;
-	background-color: #1f1a34;
-	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-
-}
-
-.gradient-overlay > span {
-    position:relative;
-    padding-top: 8px;
-    padding-left: 8px;
-    text-align: center;
-    text-transform:uppercase;
-    z-index:1;
-    display:block;
-    color:#fff;
-    font-size:23px;
-    text-shadow:1px -1px 0px #000;
-}
-
 /******************************************************/
 /*              [Holding Card]                        */
 /******************************************************/
