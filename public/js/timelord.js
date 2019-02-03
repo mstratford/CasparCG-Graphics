@@ -61,6 +61,8 @@ window.Timelord = {
 			} else {
 				Timelord.setNews(false);
 			}
+		} else {
+			Timelord.setNews(false);
 		}
 	},
 
@@ -157,7 +159,7 @@ window.Timelord = {
 	 */
 	setCurrentShowName: function (name) {
 		Timelord._$('#holdingcard-screen-timelord .now')
-			.html(name);
+			.html(name.substr(name.indexOf(':') + 1));
 	},
 
 	/**
@@ -220,7 +222,7 @@ window.Timelord = {
 	 * @param {String} caption
 	 */
 	setCaption(text) {
-		Timelord._$('#holdingcard-screen-timelord .caption').text(text);
+		Timelord._$('#holdingcard-screen-timelord .caption').html(text);
 	},
 
 	/**
